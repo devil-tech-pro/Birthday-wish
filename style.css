@@ -26,10 +26,13 @@ body {
   overflow-x: hidden;
 }
 
-body:before {
+/* Background */
+body::before {
   content: "";
   position: fixed;
   inset: 0;
+  pointer-events: none;
+
   background:
     radial-gradient(
       circle at 15% 10%,
@@ -41,7 +44,6 @@ body:before {
       rgba(155, 108, 255, 0.11),
       transparent 28%
     );
-  pointer-events: none;
 }
 
 .noise {
@@ -49,6 +51,7 @@ body:before {
   inset: 0;
   opacity: 0.035;
   pointer-events: none;
+  z-index: 100;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='%23n'/%3E%3C/svg%3E");
 }
 
@@ -57,6 +60,8 @@ body:before {
   inset: 0;
   pointer-events: none;
   opacity: 0.025;
+  z-index: 99;
+
   background: repeating-linear-gradient(
     0deg,
     transparent 0,
@@ -65,7 +70,9 @@ body:before {
   );
 }
 
+/* Main */
 .app {
+  width: 100%;
   max-width: 1180px;
   margin: auto;
   padding: 0 24px;
@@ -86,17 +93,39 @@ body:before {
   place-items: center;
 }
 
-/* =========================================
-   BOOT SCREEN
-========================================= */
+/* =====================================================
+   GLASS
+===================================================== */
+
+.glass {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 21, 32, 0.92),
+      rgba(10, 12, 19, 0.86)
+    );
+
+  border: 1px solid var(--line);
+
+  box-shadow:
+    0 18px 70px rgba(0, 0, 0, 0.25);
+}
+
+/* =====================================================
+   BOOT
+===================================================== */
 
 .boot-card {
   width: min(680px, 100%);
   padding: 30px;
+
   border: 1px solid var(--line);
-  background: rgba(10, 12, 19, 0.84);
-  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.55);
   border-radius: 22px;
+
+  background: rgba(10, 12, 19, 0.84);
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.55);
 }
 
 .brand {
@@ -116,11 +145,13 @@ body:before {
 }
 
 .terminal {
-  font-family: ui-monospace, monospace;
-  line-height: 2;
-  color: #aeb5c5;
-  font-size: 13px;
   min-height: 170px;
+
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 2;
+
+  color: #aeb5c5;
 }
 
 .terminal b {
@@ -129,50 +160,49 @@ body:before {
 
 .progress {
   height: 5px;
-  background: #191d28;
-  border-radius: 99px;
+
   overflow: hidden;
+
+  background: #191d28;
+
+  border-radius: 99px;
 }
 
 .progress div {
-  height: 100%;
   width: 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--accent),
+      var(--accent2)
+    );
+
   transition: width 0.12s;
 }
 
 .boot-status {
   margin-top: 12px;
+
   color: #777e91;
+
   font: 11px Orbitron;
+
   letter-spacing: 1.5px;
 }
 
-/* =========================================
-   GLASS
-========================================= */
-
-.glass {
-  background: linear-gradient(
-    145deg,
-    rgba(18, 21, 32, 0.92),
-    rgba(10, 12, 19, 0.86)
-  );
-
-  border: 1px solid var(--line);
-
-  box-shadow:
-    0 18px 70px rgba(0, 0, 0, 0.25);
-}
-
-/* =========================================
+/* =====================================================
    LOGIN
-========================================= */
+===================================================== */
 
 .login-card {
   width: min(470px, 100%);
+
   padding: 42px;
+
   border-radius: 28px;
+
   text-align: center;
 }
 
@@ -182,10 +212,13 @@ body:before {
 }
 
 .eyebrow {
-  font: 10px Orbitron;
-  letter-spacing: 2px;
-  color: #858c9e;
   margin-bottom: 12px;
+
+  font: 10px Orbitron;
+
+  letter-spacing: 2px;
+
+  color: #858c9e;
 }
 
 .login-card h1 {
@@ -196,62 +229,102 @@ body:before {
 .login-card h1 span,
 .hero h1 span,
 .modal h2 span {
-  background: linear-gradient(90deg, #ff6d9e, #a879ff);
+  background:
+    linear-gradient(
+      90deg,
+      #ff6d9e,
+      #a879ff
+    );
+
   -webkit-background-clip: text;
+  background-clip: text;
+
   color: transparent;
 }
 
 .login-card p {
-  color: var(--muted);
-  line-height: 1.7;
   margin-bottom: 26px;
+
+  color: var(--muted);
+
   font-size: 14px;
+  line-height: 1.7;
 }
 
 .login-card label {
   display: block;
-  text-align: left;
-  font: 10px Orbitron;
-  color: #8b91a2;
+
   margin-bottom: 8px;
+
+  text-align: left;
+
+  font: 10px Orbitron;
+
   letter-spacing: 1px;
+
+  color: #8b91a2;
 }
 
 .password-wrap {
   display: flex;
+
+  overflow: hidden;
+
+  margin-bottom: 14px;
+
   border: 1px solid var(--line);
   border-radius: 12px;
-  overflow: hidden;
+
   background: #090b11;
-  margin-bottom: 14px;
 }
 
 .password-wrap input {
   flex: 1;
-  background: transparent;
+
+  padding: 14px;
+
   border: 0;
   outline: 0;
+
+  background: transparent;
+
   color: white;
-  padding: 14px;
 }
 
 .password-wrap button {
-  border: 0;
-  background: transparent;
-  color: #8d94a6;
   padding: 0 15px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #8d94a6;
+
   cursor: pointer;
 }
 
 .primary {
+  padding: 14px 20px;
+
   border: 0;
   border-radius: 12px;
-  padding: 14px 20px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #ff4f8b,
+      #8d62ef
+    );
+
   color: white;
-  background: linear-gradient(100deg, #ff4f8b, #8d62ef);
+
   font-weight: 800;
+
   cursor: pointer;
-  box-shadow: 0 10px 35px rgba(255, 79, 139, 0.18);
+
+  box-shadow:
+    0 10px 35px rgba(255, 79, 139, 0.18);
+
   transition: 0.2s;
 }
 
@@ -261,27 +334,34 @@ body:before {
 }
 
 .error {
-  color: #ff658f !important;
   min-height: 20px;
+
   margin: 10px 0 !important;
+
+  color: #ff658f !important;
 }
 
 .tiny {
-  font-size: 10px;
-  color: #5f6575;
   margin-top: 20px;
+
+  color: #5f6575;
+
+  font-size: 10px;
+
   letter-spacing: 1px;
 }
 
-/* =========================================
-   NAVIGATION
-========================================= */
+/* =====================================================
+   NAV
+===================================================== */
 
 .nav {
   height: 80px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   border-bottom: 1px solid var(--line);
 }
 
@@ -294,60 +374,83 @@ body:before {
 }
 
 .online {
-  font: 10px Orbitron;
   color: #7d8496;
+
+  font: 10px Orbitron;
 }
 
 .online i {
   display: inline-block;
+
   width: 7px;
   height: 7px;
-  border-radius: 50%;
-  background: #65f6b1;
-  box-shadow: 0 0 12px #65f6b1;
+
   margin-right: 7px;
+
+  border-radius: 50%;
+
+  background: #65f6b1;
+
+  box-shadow:
+    0 0 12px #65f6b1;
 }
 
-/* =========================================
+/* =====================================================
    HERO
-========================================= */
+===================================================== */
 
 .hero {
   display: grid;
+
   grid-template-columns: 1.2fr 0.8fr;
+
   gap: 30px;
+
   align-items: center;
+
   padding: 90px 0 70px;
 }
 
 .hero h1 {
-  font-size: clamp(46px, 7vw, 82px);
-  line-height: 0.98;
-  letter-spacing: -4px;
   margin-bottom: 25px;
+
+  font-size: clamp(46px, 7vw, 82px);
+
+  line-height: 0.98;
+
+  letter-spacing: -4px;
 }
 
 .hero-text {
   max-width: 600px;
-  color: #9da3b3;
-  line-height: 1.8;
+
   margin-bottom: 28px;
+
+  color: #9da3b3;
+
+  line-height: 1.8;
 }
 
-/* =========================================
+/* =====================================================
    ORB
-========================================= */
+===================================================== */
 
 .orb-wrap {
+  position: relative;
+
   height: 390px;
+
   display: grid;
   place-items: center;
-  position: relative;
 }
 
 .orb {
   width: 250px;
   height: 250px;
+
+  display: grid;
+  place-items: center;
+
   border-radius: 50%;
 
   background:
@@ -359,46 +462,57 @@ body:before {
       #111 75%
     );
 
-  box-shadow: 0 0 80px rgba(255, 79, 139, 0.25);
-
-  display: grid;
-  place-items: center;
+  box-shadow:
+    0 0 80px rgba(255, 79, 139, 0.25);
 
   animation: float 4s ease-in-out infinite;
 }
 
 .orb-core {
-  font: 800 100px Orbitron;
   color: white;
-  text-shadow: 0 0 35px rgba(255, 255, 255, 0.45);
+
+  font: 800 100px Orbitron;
+
+  text-shadow:
+    0 0 35px rgba(255, 255, 255, 0.45);
 }
 
 .orbit {
   position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
+
   width: 330px;
   height: 170px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 50%;
+
   transform: rotate(-25deg);
 }
 
 .orbit2 {
   width: 180px;
   height: 340px;
+
   transform: rotate(35deg);
 }
 
 .orb-label {
   position: absolute;
   bottom: 15px;
+
   text-align: center;
-  font: 700 11px Orbitron;
-  letter-spacing: 3px;
+
   color: #dce0e9;
+
+  font: 700 11px Orbitron;
+
+  letter-spacing: 3px;
 }
 
 .orb-label small {
   color: #777d8e;
+
   font-size: 8px;
 }
 
@@ -408,39 +522,48 @@ body:before {
   }
 }
 
-/* =========================================
+/* =====================================================
    DASHBOARD
-========================================= */
+===================================================== */
 
 .dashboard {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
+
   gap: 14px;
+
   margin-bottom: 100px;
 }
 
 .stat {
   padding: 22px;
+
   border-radius: 17px;
 }
 
 .stat span,
 .stat small {
   display: block;
-  font: 9px Orbitron;
+
   color: #777e90;
+
+  font: 9px Orbitron;
+
   letter-spacing: 1px;
 }
 
 .stat b {
   display: block;
-  font-size: 22px;
+
   margin: 10px 0;
+
+  font-size: 22px;
 }
 
-/* =========================================
+/* =====================================================
    SECTIONS
-========================================= */
+===================================================== */
 
 .section {
   padding: 30px 0 90px;
@@ -448,8 +571,10 @@ body:before {
 
 .section-title {
   display: flex;
-  justify-content: space-between;
+
   align-items: end;
+  justify-content: space-between;
+
   margin-bottom: 25px;
 }
 
@@ -458,54 +583,53 @@ body:before {
 }
 
 .counter {
-  font: 10px Orbitron;
   color: #6d7383;
+
+  font: 10px Orbitron;
 }
 
-/* =========================================
-   MEMORY TIMELINE
-========================================= */
+/* =====================================================
+   MEMORY GRID
+===================================================== */
 
 .timeline {
+  width: 100%;
+
   display: grid;
 
-  /* Two cards per row */
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
 
   gap: 16px;
-
-  width: 100%;
 }
 
-/* =========================================
+/* =====================================================
    MEMORY CARD
-========================================= */
+===================================================== */
 
 .memory {
+  /*
+    IMPORTANT:
+    Do not allow natural image size
+    to change card size.
+  */
+
+  min-width: 0;
+
   display: grid;
 
-  /*
-    Fixed image column.
-    This prevents the original image dimensions
-    from expanding the entire card.
-  */
-  grid-template-columns: 145px minmax(0, 1fr);
+  grid-template-columns:
+    145px minmax(0, 1fr);
 
   gap: 18px;
 
+  align-items: center;
+
   padding: 14px;
-
-  border-radius: 18px;
-
-  /*
-    Very important:
-    prevents grid children from overflowing.
-  */
-  min-width: 0;
 
   overflow: hidden;
 
-  align-items: stretch;
+  border-radius: 18px;
 
   transition:
     transform 0.3s ease,
@@ -516,34 +640,38 @@ body:before {
 .memory:hover {
   transform: translateY(-4px);
 
-  border-color: rgba(255, 79, 139, 0.25);
+  border-color:
+    rgba(255, 79, 139, 0.25);
 
   box-shadow:
-    0 22px 65px rgba(0, 0, 0, 0.35),
-    0 0 30px rgba(255, 79, 139, 0.05);
+    0 22px 65px rgba(0, 0, 0, 0.35);
 }
 
-/* =========================================
-   IMAGE CONTAINER
-========================================= */
+/* =====================================================
+   MEMORY IMAGE BOX
+===================================================== */
 
 .memory .photo {
+  /*
+    FIXED WIDTH
+  */
   width: 145px;
 
   /*
-    FIX:
-    Explicit height instead of allowing the
-    image's natural height to control the card.
+    FIXED HEIGHT
   */
   height: 220px;
 
+  min-width: 145px;
   min-height: 220px;
 
-  border-radius: 12px;
+  flex-shrink: 0;
 
   overflow: hidden;
 
   position: relative;
+
+  border-radius: 12px;
 
   background:
     linear-gradient(
@@ -551,25 +679,31 @@ body:before {
       #171b28,
       #0e1119
     );
-
-  flex-shrink: 0;
 }
 
-/* =========================================
-   ACTUAL IMAGE
-========================================= */
+/* =====================================================
+   MEMORY IMAGE
+===================================================== */
 
 .memory .photo img {
-  width: 100%;
-  height: 100%;
+  /*
+    VERY IMPORTANT
+  */
+
+  width: 100% !important;
+
+  height: 100% !important;
+
+  max-width: none !important;
+
+  max-height: none !important;
 
   display: block;
 
   /*
-    Keeps the image inside the fixed box.
-    Portrait photos will be cropped slightly
-    instead of expanding the card.
+    Crop image inside box
   */
+
   object-fit: cover;
 
   object-position: center;
@@ -581,28 +715,58 @@ body:before {
     filter 0.5s ease;
 }
 
-/* Image hover */
 .memory:hover .photo img {
-  transform: scale(1.06);
+  transform: scale(1.05);
+
   filter: brightness(1.05);
 }
 
-/* =========================================
+/* Image shine */
+
+.memory .photo::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent 80%
+    );
+
+  transform: translateX(-100%);
+
+  transition: transform 0.7s ease;
+}
+
+.memory:hover .photo::after {
+  transform: translateX(100%);
+}
+
+/* =====================================================
    MEMORY TEXT
-========================================= */
+===================================================== */
 
 .memory > div:last-child {
   min-width: 0;
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
 }
 
 .memory h3 {
-  font-size: 18px;
-
   margin: 8px 0;
+
+  font-size: 18px;
 
   line-height: 1.3;
 }
@@ -618,112 +782,103 @@ body:before {
 }
 
 .year {
-  font: 9px Orbitron;
-
   color: #ff6799;
+
+  font: 9px Orbitron;
 
   letter-spacing: 1px;
 }
 
-/* =========================================
-   OPTIONAL IMAGE SHINE
-========================================= */
-
-.memory .photo::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      120deg,
-      transparent 20%,
-      rgba(255, 255, 255, 0.08) 50%,
-      transparent 80%
-    );
-
-  transform: translateX(-100%);
-
-  transition: transform 0.7s ease;
-
-  pointer-events: none;
-}
-
-.memory:hover .photo::after {
-  transform: translateX(100%);
-}
-
-/* =========================================
-   SISTER ANALYTICS
-========================================= */
+/* =====================================================
+   CARDS
+===================================================== */
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
   gap: 16px;
 }
 
 .reason {
   padding: 25px;
+
   border-radius: 18px;
 }
 
 .reason span {
-  font: 10px Orbitron;
   color: #ff6799;
+
+  font: 10px Orbitron;
 }
 
 .reason b {
   display: block;
-  font-size: 18px;
+
   margin: 20px 0 10px;
+
+  font-size: 18px;
 }
 
 .reason p {
   color: #9298a8;
+
   font-size: 13px;
+
   line-height: 1.75;
 }
 
-/* =========================================
+/* =====================================================
    PRIVATE MESSAGE
-========================================= */
+===================================================== */
 
 .message-section {
-  border-radius: 25px;
-  padding: 45px;
   margin: 0 0 80px;
+
+  padding: 45px;
+
+  border-radius: 25px;
+
   text-align: center;
 }
 
 .message-section h2 {
-  font-size: 30px;
   margin-bottom: 18px;
+
+  font-size: 30px;
 }
 
 .message-section p {
   max-width: 760px;
+
   margin: auto;
+
   color: #9298a8;
+
   font-size: 15px;
+
   line-height: 1.75;
 }
 
 .signature {
   margin-top: 25px;
+
   color: #ff75a2;
+
   font-weight: 700;
 }
 
-/* =========================================
+/* =====================================================
    FOOTER
-========================================= */
+===================================================== */
 
 footer {
   display: flex;
+
   justify-content: space-between;
+
   padding: 25px 0 40px;
 
   color: #5f6575;
@@ -733,17 +888,16 @@ footer {
   letter-spacing: 1px;
 }
 
-/* =========================================
-   FINAL MODAL
-========================================= */
+/* =====================================================
+   MODAL
+===================================================== */
 
 .modal {
   position: fixed;
+
   inset: 0;
 
-  background: rgba(3, 4, 8, 0.84);
-
-  backdrop-filter: blur(14px);
+  z-index: 1000;
 
   display: none;
 
@@ -751,7 +905,10 @@ footer {
 
   padding: 20px;
 
-  z-index: 10;
+  background:
+    rgba(3, 4, 8, 0.84);
+
+  backdrop-filter: blur(14px);
 }
 
 .modal.show {
@@ -759,26 +916,26 @@ footer {
 }
 
 .modal-box {
-  width: min(580px, 100%);
+  position: relative;
 
-  border-radius: 28px;
+  width: min(580px, 100%);
 
   padding: 45px;
 
-  text-align: center;
+  border-radius: 28px;
 
-  position: relative;
+  text-align: center;
 }
 
 .close {
   position: absolute;
 
-  right: 18px;
   top: 14px;
-
-  background: none;
+  right: 18px;
 
   border: 0;
+
+  background: none;
 
   color: #8d94a4;
 
@@ -788,9 +945,9 @@ footer {
 }
 
 .cake {
-  font-size: 70px;
-
   margin-bottom: 10px;
+
+  font-size: 70px;
 
   animation:
     bounce 1.2s infinite alternate;
@@ -805,19 +962,19 @@ footer {
 }
 
 .modal h2 {
+  margin-bottom: 18px;
+
   font-size: 38px;
 
   line-height: 1.1;
-
-  margin-bottom: 18px;
 }
 
 .modal p {
   color: #9ca2b2;
 
-  line-height: 1.8;
-
   font-size: 14px;
+
+  line-height: 1.8;
 }
 
 .modal p strong {
@@ -838,9 +995,9 @@ footer {
   font-weight: 600;
 }
 
-/* =========================================
+/* =====================================================
    TABLET
-========================================= */
+===================================================== */
 
 @media (max-width: 900px) {
 
@@ -849,20 +1006,22 @@ footer {
   }
 
   .memory {
-    grid-template-columns: 150px minmax(0, 1fr);
+    grid-template-columns:
+      150px minmax(0, 1fr);
   }
 
   .memory .photo {
     width: 150px;
     height: 230px;
+
+    min-width: 150px;
     min-height: 230px;
   }
-
 }
 
-/* =========================================
+/* =====================================================
    MOBILE
-========================================= */
+===================================================== */
 
 @media (max-width: 800px) {
 
@@ -870,7 +1029,7 @@ footer {
     padding: 0 16px;
   }
 
-  /* HERO */
+  /* Hero */
 
   .hero {
     grid-template-columns: 1fr;
@@ -907,13 +1066,13 @@ footer {
     font-size: 52px;
   }
 
-  /* DASHBOARD */
+  /* Dashboard */
 
   .dashboard {
     grid-template-columns: 1fr;
   }
 
-  /* MEMORY */
+  /* Memory */
 
   .timeline {
     grid-template-columns: 1fr;
@@ -922,7 +1081,8 @@ footer {
   }
 
   .memory {
-    grid-template-columns: 120px minmax(0, 1fr);
+    grid-template-columns:
+      120px minmax(0, 1fr);
 
     gap: 14px;
 
@@ -931,9 +1091,9 @@ footer {
 
   .memory .photo {
     width: 120px;
-
     height: 180px;
 
+    min-width: 120px;
     min-height: 180px;
   }
 
@@ -943,16 +1103,17 @@ footer {
 
   .memory p {
     font-size: 12px;
+
     line-height: 1.6;
   }
 
-  /* CARDS */
+  /* Cards */
 
   .cards {
     grid-template-columns: 1fr;
   }
 
-  /* FOOTER */
+  /* Footer */
 
   footer {
     flex-direction: column;
@@ -960,16 +1121,16 @@ footer {
     gap: 10px;
   }
 
-  /* MODAL */
+  /* Modal */
 
   .modal-box {
     padding: 35px 22px;
   }
 }
 
-/* =========================================
+/* =====================================================
    SMALL MOBILE
-========================================= */
+===================================================== */
 
 @media (max-width: 480px) {
 
@@ -984,27 +1145,24 @@ footer {
   }
 
   /*
-    Mobile memory card:
-    image on top,
-    text underneath.
+    On very small phones:
+    image becomes full width,
+    but height is still controlled.
   */
 
   .memory {
-    display: grid;
-
     grid-template-columns: 1fr;
 
     gap: 14px;
-
-    padding: 12px;
   }
 
   .memory .photo {
     width: 100%;
 
-    height: 250px;
+    height: 260px;
 
-    min-height: 250px;
+    min-width: 0;
+    min-height: 260px;
   }
 
   .memory > div:last-child {
