@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Didi OS — Gunjan Di ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="scanlines"></div>
+
+  <main class="app">
+    <!-- BOOT SCREEN -->
+    <section id="boot" class="screen active">
+      <div class="boot-card">
+        <div class="brand"><span>◆</span> DIDI OS <small>v1.0</small></div>
+        <div class="terminal" id="terminal"></div>
+        <div class="progress"><div id="progressBar"></div></div>
+        <div class="boot-status" id="bootStatus">INITIALIZING BIRTHDAY PROTOCOL...</div>
+      </div>
+    </section>
+
+    <!-- LOGIN -->
+    <section id="login" class="screen">
+      <div class="login-card glass">
+        <div class="lock">🔐</div>
+        <div class="eyebrow">IDENTITY VERIFIED</div>
+        <h1>Welcome, <span>Gunjan Di</span></h1>
+        <p>This system contains a surprise prepared especially for you.</p>
+        <label for="password">ENTER SECRET KEY</label>
+        <div class="password-wrap">
+          <input id="password" type="password" placeholder="Hint: your first name 😉" autocomplete="off">
+          <button id="togglePassword" type="button">👁</button>
+        </div>
+        <button id="unlock" class="primary">ACCESS GRANTED <span>→</span></button>
+        <p id="loginError" class="error"></p>
+        <div class="tiny">AUTHORIZED USER: <strong>GUNJAN DI</strong></div>
+      </div>
+    </section>
+
+    <!-- HOME -->
+    <section id="home" class="screen">
+      <nav class="nav">
+        <div class="logo">DIDI<span>OS</span></div>
+        <div class="online"><i></i> BIRTHDAY MODE</div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">SYSTEM MESSAGE #01</div>
+          <h1>Happy Birthday,<br><span>Gunjan Di ❤️</span></h1>
+          <p class="hero-text">
+            Today isn't just another date on the calendar.
+            It's the day one of the most special people in my life came into this world.
+          </p>
+          <button class="primary" id="surpriseBtn">CLICK TO UNLOCK ❤️</button>
+        </div>
+
+        <div class="orb-wrap">
+          <div class="orb"><div class="orb-core">G</div></div>
+          <div class="orbit orbit1"></div>
+          <div class="orbit orbit2"></div>
+          <div class="orb-label">GUNJAN<br><small>ELDER SISTER</small></div>
+        </div>
+      </div>
+
+      <div class="dashboard">
+        <div class="stat glass"><span>MEMORIES</span><b>∞</b><small>LOADED</small></div>
+        <div class="stat glass"><span>LOVE LEVEL</span><b>100%</b><small>MAXIMUM</small></div>
+        <div class="stat glass"><span>SISTER STATUS</span><b>LEGEND</b><small>VERIFIED</small></div>
+      </div>
+
+      <section class="section">
+        <div class="section-title">
+          <div><div class="eyebrow">MEMORY DATABASE</div><h2>Our little timeline 📸</h2></div>
+          <span class="counter">01 — 04</span>
+        </div>
+
+        <div class="timeline">
+          <article class="memory glass">
+            <div class="photo placeholder">YOUR<br>PHOTO<br>01</div>
+            <div><span class="year">MEMORY 01</span><h3>The old days</h3><p>Yahan apni childhood photo aur uske saath ek chhoti si funny memory likh dena.</p></div>
+          </article>
+          <article class="memory glass">
+            <div class="photo placeholder">YOUR<br>PHOTO<br>02</div>
+            <div><span class="year">MEMORY 02</span><h3>Growing up</h3><p>School ya family ki koi favourite photo yahan add kar sakte ho.</p></div>
+          </article>
+          <article class="memory glass">
+            <div class="photo placeholder">YOUR<br>PHOTO<br>03</div>
+            <div><span class="year">MEMORY 03</span><h3>That one crazy moment 😂</h3><p>Koi funny memory jise dekh kar Gunjan Di ko turant hasi aa jaye.</p></div>
+          </article>
+          <article class="memory glass">
+            <div class="photo placeholder">YOUR<br>PHOTO<br>04</div>
+            <div><span class="year">MEMORY 04</span><h3>Today ❤️</h3><p>Latest photo ke saath ek line: “And here we are… making more memories.”</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cards-section">
+        <div class="section-title">
+          <div><div class="eyebrow">SISTER ANALYTICS</div><h2>Why you're the best</h2></div>
+        </div>
+        <div class="cards">
+          <div class="reason glass"><span>01</span><b>Built-in Support</b><p>Chahe situation koi bhi ho, elder sister support system always ON.</p></div>
+          <div class="reason glass"><span>02</span><b>Professional Scolding™</b><p>Thodi daant free mein milti hai… aur surprisingly useful bhi hoti hai 😂</p></div>
+          <div class="reason glass"><span>03</span><b>Permanent Family VIP</b><p>Because you're not just my sister — you're a forever part of my life.</p></div>
+        </div>
+      </section>
+
+      <section class="message-section glass">
+        <div class="eyebrow">PRIVATE MESSAGE</div>
+        <h2>From your annoying little brother ❤️</h2>
+        <p>
+          Gunjan Di, life mein kitne bhi updates aayein, ek cheez kabhi change nahi hogi —
+          you're my elder sister and someone I'll always be grateful for.
+          Thank you for all the support, advice, fights, laughter and memories.
+          I hope this year brings you everything you deserve and a lot more reasons to smile.
+        </p>
+        <div class="signature">— Your Little Brother 🫶</div>
+      </section>
+
+      <footer>
+        <span>DIDI OS • BIRTHDAY PROTOCOL COMPLETE</span>
+        <span>MADE WITH ❤️ BY YOUR BROTHER</span>
+      </footer>
+    </section>
+
+    <!-- FINAL SURPRISE MODAL -->
+    <div id="modal" class="modal">
+      <div class="modal-box glass">
+        <button class="close" id="closeModal">×</button>
+        <div class="cake">🎂</div>
+        <div class="eyebrow">FINAL SYSTEM MESSAGE</div>
+        <h2>Happy Birthday<br><span>Gunjan Di ❤️</span></h2>
+        <p>
+          No fancy technology can measure how important you are.
+          So here's the simplest message from me:
+          <strong>Stay happy, stay smiling, and keep being the amazing person you are.</strong>
+        </p>
+        <div class="wish">May your next chapter be your best one yet. ✨</div>
+        <button class="primary" id="confettiBtn">MAKE SOME NOISE 🎉</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
